@@ -1,12 +1,11 @@
 import time
 import subprocess
-import argparse
-import sys
-NK = 3.0
+
+SPLIT = 3
 def programe_input():
-    x = input("Enter the number of the source node ")
-    y = input("Enter the number of transit node ")
-    z = input("Enter the number of the dest node ")
+    x = input("Enter X ")
+    y = input("Enter Y ")
+    z = input("Enter Z ")
     return x, y, z
 
 def main():
@@ -67,7 +66,7 @@ def write_3_flow_constraint(x,y,z, u_set, output):
                                               n + 1,
                                               k + 1))
             line = line[:-1]
-            line += "= {}".format(NK)
+            line += "= {}".format(SPLIT)
             output.write(line + "\n")
 
 def write_equal_flow_c(x,y,z, output):
@@ -194,13 +193,3 @@ def cplex_run(filename):
 
 if __name__ == '__main__':
     main()
-
-
-
-
-
-
-
-
-
-
